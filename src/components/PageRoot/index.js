@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 import styled from "styled-components";
 import Menu from "../Menu";
 import Footer from "../Footer";
@@ -11,13 +11,13 @@ const Main = styled.main`
 `;
 
 function PageRoot({ children }) {
-  return (
-    <>
-      <Menu />
-      <Main>{children}</Main>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Menu />
+            <Main>{children}</Main>
+            <Footer />
+        </>
+    );
 }
 
 export default PageRoot;
