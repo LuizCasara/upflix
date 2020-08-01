@@ -33,7 +33,7 @@ function CadastroCategoria() {
 
     useEffect(() => {
         setTimeout(() => {
-            const URL = 'http://localhost:8080/categorias';
+            const URL = 'https://upflix.herokuapp.com/categorias';
             fetch(URL)
                 .then(async (response) => {
                     const loaded = await response.json();
