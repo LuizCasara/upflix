@@ -32,14 +32,12 @@ function CadastroCategoria() {
     }
 
     useEffect(() => {
-        setTimeout(() => {
-            const URL = 'https://upflix.herokuapp.com/categorias';
-            fetch(URL)
-                .then(async (response) => {
-                    const loaded = await response.json();
-                    setCategories([...loaded]);
-                });
-        }, 2 * 1000)
+        const URL = 'https://upflix.herokuapp.com/categorias';
+        fetch(URL)
+            .then(async (response) => {
+                const loaded = await response.json();
+                setCategories([...loaded]);
+            });
     }, []);
 
     return (
