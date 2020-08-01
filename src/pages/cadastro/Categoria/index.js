@@ -32,7 +32,7 @@ function CadastroCategoria() {
     }
 
     useEffect(() => {
-        const URL = 'https://upflix.herokuapp.com/categorias';
+        const URL = window.location.hostname.includes('localhost') ? 'http://localhost:8080/categorias' : 'https://upflix.herokuapp.com/categorias';
         fetch(URL)
             .then(async (response) => {
                 const loaded = await response.json();
