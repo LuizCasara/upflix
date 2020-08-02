@@ -2,52 +2,75 @@
   "categorias": [
     {
       "id": 1,
-      "titulo": "Front End",
-      "cor": "#6BD1FF",
+      "titulo": "Games",
+      "color": "#6BD1FF",
       "link_extra": {
-        "text": "Formação de Front End na Alura",
-        "url": "https://www.alura.com.br/cursos-online-front-end"
+        "url": "https://www.youtube.com/watch?v=KVvXv1Z6EY8"
       }
     },
     {
       "id": 2,
-      "titulo": "Back End",
-      "cor": "#6BD1FF",
+      "titulo": "Animes",
+      "color": "#00C86F",
       "link_extra": {
-        "text": "Formação de Front End na Alura",
         "url": "https://www.alura.com.br/cursos-online-front-end"
       }
+    },
+    {
+      "titulo": "Extras",
+      "description": "Vídeos extra",
+      "color": "#d21414",
+      "id": 3
     }
   ],
   "videos": [
     {
       "id": 1,
       "categoriaId": 1,
-      "titulo": "SEO com React",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+      "titulo": "Factorio - Gameplay Trailer",
+      "url": "https://www.youtube.com/watch?v=KVvXv1Z6EY8"
     },
     {
-      "id": 2,
-      "categoriaId": 2,
-      "titulo": "SEO com React",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
-    },
-    {
-      "titulo": "Video Padrão",
-      "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
+      "titulo": "Ingress - It's time to Move",
+      "url": "https://www.youtube.com/watch?v=92rYjlxqypM",
       "categoriaId": 1,
+      "id": 2
+    },
+    {
+      "titulo": "Hunter X Hunter Official Extended Trailer",
+      "url": "https://www.youtube.com/watch?v=d6kBeJjTGnY",
+      "categoriaId": 2,
       "id": 3
     },
     {
-      "titulo": "Video Padrão",
-      "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
+      "titulo": "My Hero Academia - Official Trailer",
+      "url": "https://www.youtube.com/watch?v=wIb3nnOeves",
+      "categoriaId": 2,
       "id": 4
     },
     {
-      "titulo": "Video Padrão",
-      "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
-      "categoriaId": 1,
+      "titulo": "Demon Slayer - Official Trailer",
+      "url": "https://www.youtube.com/watch?v=A7sjO7KQ8EM",
+      "categoriaId": 2,
       "id": 5
+    },
+    {
+      "titulo": "Dorohedoro (2020) - Official Trailer",
+      "url": "https://www.youtube.com/watch?v=ry-jzv18fOY",
+      "categoriaId": 2,
+      "id": 6
+    },
+    {
+      "titulo": "They Are Billions - Official Trailer",
+      "url": "https://www.youtube.com/watch?v=QX1rPWPN4DI",
+      "categoriaId": 1,
+      "id": 7
+    },
+    {
+      "titulo": "LiSA - 紅蓮華 / THE FIRST TAKE",
+      "url": "https://www.youtube.com/watch?v=MpYy6wwqxoo",
+      "categoriaId": 3,
+      "id": 8
     }
   ]
 }
