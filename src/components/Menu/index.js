@@ -10,9 +10,14 @@ function Menu() {
             <Link to="/">
                 <img className="Logo" alt="Upflix logo" src={logo} />
             </Link>
-            <Button as={Link} className="ButtonLink" to="/cadastro/video">
-                Novo vídeo
-            </Button>
+            <div>
+                <Button as={Link} className="ButtonLink" to="/cadastro/video">
+                    Vídeos
+                </Button>>
+                <Button as={Link} className="ButtonLink" to="/cadastro/categoria">
+                    Categorias
+                </Button>
+            </div>
         </nav>
     );
 }

@@ -10,30 +10,48 @@ import categoriasRepository from '../../../repositories/categorias'
 function CadastroVideo() {
     const history = useHistory();
     const [categorias, setCategorias] = useState([]);
+    const [videos, setVideos] = useState([]);
     const { values, handleChange } = useForm({
-        titulo: 'Video Padrão',
-        url: 'https://www.youtube.com/watch?v=hhQ3RtvmfEg'
+        titulo: '',
+        url: ''
     });
 
     function handleSubmit(event) {
         event.preventDefault();
         const categoriaId = categorias.find((categoria) => {
             return categoria.titulo === values.categoria;
-        }).id;
+        })?.id;
         videosRepository.create({
             titulo: values.titulo,
             url: values.url,
-            categoriaId,
+            categoriaId: categoriaId ?? 3,
         })
         history.push('/')
     }
 
+    function handleRemove(id) {
+        videosRepository.remove(id);
+        setVideos([...videos.filter(video => video.id !== id)]);
+    }
+
     useEffect(() => {
+        loadCategorias();
+        loadVideos();
+    }, [])
+
+    function loadCategorias() {
         categoriasRepository.getAll()
             .then((response) => {
                 setCategorias(response);
             })
-    }, [])
+    }
+
+    function loadVideos() {
+        videosRepository.getAll()
+            .then((response) => {
+                setVideos(response);
+            })
+    }
 
     return (
         <PageRoot>
@@ -69,7 +87,24 @@ function CadastroVideo() {
                 <Button as="Link" type="submit" onClick={handleSubmit} >Cadastrar</Button>
             </form>
 
-            <Link to="/cadastro/categoria">Cadastro de Categoria</Link>
+            {videos.length === 0 &&
+                <div>
+                    Loading...
+                </div>
+            }
+            <ul>
+                {videos.map((video, idx) => {
+                    return (
+                        <div style={{ display: 'flex' }}>
+                            <li key={`${video.titulo}-${idx}`}>{video.titulo}[{video.categoriaId}] </li>
+                            <div style={{ cursor: 'pointer', color: 'red', paddingLeft: '4px' }} onClick={() => handleRemove(video.id)}>{"X"}</div>
+                        </div>
+                    );
+                })}
+            </ul>
+
+            <br />
+            <Link to="/">Ir para home</Link>
         </PageRoot>
     );
 }

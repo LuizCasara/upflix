@@ -29,7 +29,7 @@ function Home() {
                     return (
                         <div key={categoria.id}>
                             <BannerMain
-                                videoDescription="Iai? será que é? ou nem?"
+                                videoDescription="O melhor jogo de todos os tempos?"
                                 videoTitle={titulo}
                                 url={url}
                             />

@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PageRoot from "../../../components/PageRoot";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import FormField from "../../../components/FormField";
 import Button from "../../../components/Button";
 import useForm from "../../../hooks/useForm";
 import URL_BACKEND from "../../../config";
 import categoriesRepository from "../../../repositories/categorias";
+import videosRepository from '../../../repositories/videos'
 
 function CadastroCategoria() {
+    const history = useHistory();
     const init = {
         titulo: "",
         description: "",
@@ -21,7 +23,21 @@ function CadastroCategoria() {
         console.log(event)
         if (values.titulo != null && values.titulo !== "") {
             setCategories([...categories, values]);
+            categoriesRepository.create({
+                titulo: values.titulo,
+                description: values.description,
+                color: values.color,
+            })
             clearForm(init);
+            history.push('/')
+        }
+    }
+
+    async function handleRemove(id) {
+        const hasVideo = await videosRepository.getByCategoryId(id);
+        if (hasVideo.length === 0) {
+            categoriesRepository.remove(id);
+            setCategories([...categories.filter(categoria => categoria.id !== id)]);
         }
     }
 
@@ -72,10 +88,16 @@ function CadastroCategoria() {
 
             <ul>
                 {categories.map((categoria, idx) => {
-                    return <li key={`${categoria.titulo}-${idx}`}>{categoria.titulo}</li>;
+                    return (
+                        <div style={{ display: 'flex' }}>
+                            <li key={`${categoria.titulo}-${idx}`}>{categoria.titulo}</li>
+                            <div style={{ cursor: 'pointer', color: 'red', paddingLeft: '4px' }} onClick={() => handleRemove(categoria.id)}>{"X"}</div>
+                        </div>
+                    );
                 })}
             </ul>
 
+            <br />
             <Link to="/">Ir para home</Link>
         </PageRoot>
     );

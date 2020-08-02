@@ -1,9 +1,10 @@
 import config from '../config'
+import repository from './repository'
 
-const URL_CATEGORIES = `${config.URL_BACKEND}/categorias`;
+const URLS = `${config.URL_BACKEND}/categorias`;
 
-function getAll() {
-    return fetch(`${URL_CATEGORIES}`)
+function getAllWithVideos() {
+    return fetch(`${URLS}?_embed=videos`)
         .then(async (response) => {
             if (response.ok) {
                 return await response.json();
@@ -12,17 +13,21 @@ function getAll() {
         });
 }
 
-function getAllWithVideos() {
-    return fetch(`${URL_CATEGORIES}?_embed=videos`)
-        .then(async (response) => {
-            if (response.ok) {
-                return await response.json();
-            }
-            throw new Error("Não foi possível pegar os dados");
-        });
+function getAll() {
+    return repository.getAll(URLS);
+}
+
+function create(object) {
+    return repository.create(URLS, object);
+}
+
+function remove(objectId) {
+    return repository.remove(URLS, objectId);
 }
 
 export default {
     getAllWithVideos,
-    getAll
+    getAll,
+    create,
+    remove,
 }

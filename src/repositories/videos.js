@@ -1,23 +1,27 @@
 import config from '../config'
+import repository from './repository'
 
-const URL_VIDEOS = `${config.URL_BACKEND}/videos`;
+const URL = `${config.URL_BACKEND}/videos`;
+
+function getAll() {
+    return repository.getAll(URL);
+}
+
+function getByCategoryId(id) {
+    return repository.getBy(URL, id, 'categoriaId');
+}
 
 function create(object) {
-    return fetch(`${URL_VIDEOS}`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-        },
-        body: JSON.stringify(object),
-    })
-        .then(async (response) => {
-            if (response.ok) {
-                return await response.json();
-            }
-            throw new Error("Não foi possível cadastrar os dados");
-        });
+    return repository.create(URL, object);
+}
+
+function remove(objectId) {
+    return repository.remove(URL, objectId);
 }
 
 export default {
-    create
+    create,
+    getAll,
+    remove,
+    getByCategoryId,
 }
