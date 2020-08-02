@@ -11,7 +11,7 @@
     },
     {
       "id": 2,
-      "titulo": "Front End",
+      "titulo": "Back End",
       "cor": "#6BD1FF",
       "link_extra": {
         "text": "Formação de Front End na Alura",
@@ -37,6 +37,17 @@
       "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
       "categoriaId": 1,
       "id": 3
+    },
+    {
+      "titulo": "Video Padrão",
+      "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
+      "id": 4
+    },
+    {
+      "titulo": "Video Padrão",
+      "url": "https://www.youtube.com/watch?v=hhQ3RtvmfEg",
+      "categoriaId": 1,
+      "id": 5
     }
   ]
 }

@@ -66,15 +66,33 @@ const ForFieldWrapper = styled.div`
     }
 `;
 
-function FormField({ label, tag, type, name, value, onChange }) {
+function FormField({ label, tag, type, name, value, onChange, suggestions }) {
     const fieldId = `id_${name}`
+    const hasSuggestion = Boolean(suggestions.length);
     return (
         <ForFieldWrapper>
             <Label htmlFor={fieldId}>
-                <Input as={tag} id={fieldId} placeholder={label} type={type} name={name} value={value} onChange={onChange} />
+                <Input
+                    as={tag}
+                    id={fieldId}
+                    placeholder={label}
+                    type={type} name={name}
+                    value={value}
+                    onChange={onChange}
+                    autoComplete={hasSuggestion ? 'off' : 'on'}
+                    list={hasSuggestion ? `suggestionFor_${fieldId}` : undefined} />
                 <Label.Text>
                     {label}
                 </Label.Text>
+                {hasSuggestion &&
+                    <datalist id={`suggestionFor_${fieldId}`}>
+                        {suggestions.map((suggestion) => (
+                            <option key={`${fieldId}-${suggestion}`} value={suggestion}>
+                                {suggestion}
+                            </option>
+                        ))}
+                    </datalist>
+                }
             </Label>
         </ForFieldWrapper>
     );
@@ -84,6 +102,7 @@ FormField.defaultProps = {
     type: 'text',
     tag: 'input',
     value: '',
+    suggestions: []
 }
 
 FormField.prototypes = {
@@ -93,5 +112,6 @@ FormField.prototypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
+    suggestions: PropTypes.arrayOf(PropTypes.string),
 }
 export default FormField;
